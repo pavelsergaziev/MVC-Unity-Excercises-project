@@ -18,8 +18,7 @@ namespace SingletonMVC
 
         private void Start()
         {
-            _textEvents = FindObjectOfType<ControllerHolder>().TextController
-              as ITextInteractionListener;
+            _textEvents = FindObjectOfType<ControllerHolder>().TextInteractionListener;
 
             _textEvents.OnTextChangeInvoked += ChangeText;
         }
@@ -27,6 +26,11 @@ namespace SingletonMVC
         private void ChangeText(string textToShow)
         {
             _textField.text = textToShow;
+        }
+
+        private void OnDestroy()
+        {
+            _textEvents.OnTextChangeInvoked -= ChangeText;
         }
     }
 

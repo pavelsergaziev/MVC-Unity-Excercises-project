@@ -28,6 +28,11 @@ namespace DependencyInjectionMVC
         {
             _textField.text = textToShow;
         }
+
+        private void OnDestroy()
+        {
+            _textEvents.OnTextChangeInvoked -= ChangeText;
+        }
     }
 
 }

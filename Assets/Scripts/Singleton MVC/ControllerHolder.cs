@@ -8,7 +8,11 @@ namespace SingletonMVC
     public class ControllerHolder : MonoBehaviour
     {
         public static ControllerHolder Instance { get; private set; }
-        public TextController TextController { get; private set; }
+
+        private TextController _textController;
+        public ITextInteractionCommand TextInteractionCommand { get { return _textController; } }
+        public ITextInteractionData TextInteractionData { get { return _textController; } }
+        public ITextInteractionListener TextInteractionListener { get { return _textController; } }
 
         private void Awake()
         {
@@ -22,7 +26,7 @@ namespace SingletonMVC
                 DontDestroyOnLoad(this);
             }
 
-            TextController = new TextController();
+            _textController = new TextController();
         }
     }
 

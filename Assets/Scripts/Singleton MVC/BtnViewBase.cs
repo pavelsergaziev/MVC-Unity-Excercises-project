@@ -11,7 +11,7 @@ namespace SingletonMVC
 
         private void Start()
         {
-            _textController = ControllerHolder.Instance.TextController as ITextInteractionCommand;
+            _textController = ControllerHolder.Instance.TextInteractionCommand;
         }
     }
 
