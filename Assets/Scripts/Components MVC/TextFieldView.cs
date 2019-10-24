@@ -9,6 +9,9 @@ namespace ComponentsMVC
 
     public class TextFieldView : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject _textEventsGO;
+
         private ITextInteractionListener _textEvents;
         private TextMeshProUGUI _textField;
 
@@ -16,20 +19,13 @@ namespace ComponentsMVC
         {
             _textField = GetComponent<TextMeshProUGUI>();
 
-
-        }
-
-        private void OnEnable()
-        {
-            _textEvents = FindObjectOfType<TextController>(); //onenable
-
+            _textEvents = _textEventsGO.GetComponent<TextController>(); //onenable
             _textEvents.OnTextChangeInvoked += ChangeText;
         }
 
         private void ChangeText(string textToShow)
         {
             _textField.text = textToShow;
-            Debug.Log(SceneManager.GetActiveScene().name);
         }
 
         private void OnDestroy()
