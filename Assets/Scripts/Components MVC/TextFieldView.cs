@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace ComponentsMVC
 {
 
     public class TextFieldView : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject _textEventsGO;
         private ITextInteractionListener _textEvents;
         private TextMeshProUGUI _textField;
 
@@ -17,7 +16,12 @@ namespace ComponentsMVC
         {
             _textField = GetComponent<TextMeshProUGUI>();
 
-            _textEvents = _textEventsGO.GetComponent<ITextInteractionListener>();
+
+        }
+
+        private void OnEnable()
+        {
+            _textEvents = FindObjectOfType<TextController>(); //onenable
 
             _textEvents.OnTextChangeInvoked += ChangeText;
         }
@@ -25,6 +29,7 @@ namespace ComponentsMVC
         private void ChangeText(string textToShow)
         {
             _textField.text = textToShow;
+            Debug.Log(SceneManager.GetActiveScene().name);
         }
 
         private void OnDestroy()

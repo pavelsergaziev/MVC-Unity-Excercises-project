@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/MVCviaSingleton.unity
+    path: Assets/Scenes/WholeScenes/MVCviaSingleton.unity
     guid: 4e2af56b512b1ea408244c67c399ae01
   m_configObjects: {}
